@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct BeerBoxApp: App {
+    let dp = Dependecies()
+    
+    init() {
+        InjectSettings.resolver = dp.container
+        dp.registerComponents()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(BeersViewModel())
         }
     }
 }
